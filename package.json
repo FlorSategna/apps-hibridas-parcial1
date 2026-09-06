@@ -1,0 +1,25 @@
+{
+  "name": "parcial1",
+  "version": "1.0.0",
+  "description": "App con nodejs",
+  "homepage": "https://github.com/FlorSategna/apps-hibridas-parcial1#readme",
+  "bugs": {
+    "url": "https://github.com/FlorSategna/apps-hibridas-parcial1/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FlorSategna/apps-hibridas-parcial1.git"
+  },
+  "license": "ISC",
+  "author": "Florencia Sategna",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
