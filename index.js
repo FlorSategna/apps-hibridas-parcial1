@@ -1,7 +1,13 @@
 import express from 'express';
+import dotenv from 'dotenv';
+
+dotenv.config();
+const port = process.env.PORT;
 
 const app = express();
-const port = 3000;
+app.use(express.urlencoded());
+app.use(express.json());
+app.use(express.static('public'));
 
 app.get('/', (request, response) => {
     console.log(`Cliente conectado`);
