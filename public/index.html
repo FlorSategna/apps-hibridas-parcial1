@@ -1,32 +1,48 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>API DE PELICULAS</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MOVIES API</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header class="bg-success">
-        <h1>API DE PELICULAS</h1>
-    </header>
-    <main class="container">
-        <img src="logo-api.png" alt="logo" width="64">
+  <header class="bg-dark text-light py-3">
+    <img src="logo-api.png" alt="logo" width="96">
+    <h1 class="text-center">MOVIES API</h1>
+  </header>
 
-            <ul>
-                <li><a href="/api/peliculas">Películas</a></li>
-                <li><a href="/api/generos">Géneros</a></li>
-                <li><a href="/api/reseñas">Reseñas</a></li>
-                <li><a href="/api/users">Usuarios</a></li>
-                <li><a href='/register'> Registro </a> </li>
-                <li><a href='/contact'> Contactos </a> </li>
-            </ul>
+  <main class="container my-4">
+    <section class="text-center mb-4">
+      <h2 class="text-light">Bienvenido a Movies API</h2>
+      <p class="lead mt-3">
+        Esta API permite gestionar películas, géneros, reseñas y usuarios.  
+        Podés consultar, buscar, filtrar y administrar contenido como si fuera un mini clon de Netflix.
+      </p>
+    </section>
 
+    <section>
+      <h2 class="text-light">Endpoints principales</h2>
+      <ul class="list-group">
+        <li class="list-group-item bg-dark text-light">
+          <a href="/api/peliculas" class="link">Películas</a> — CRUD, búsqueda y filtros
+        </li>
+        <li class="list-group-item bg-dark text-light">
+          <a href="/api/generos" class="link">Géneros</a> — listado y gestión de géneros
+        </li>
+        <li class="list-group-item bg-dark text-light">
+          <a href="/api/reviews" class="link">Reseñas</a> — comentarios y puntajes de usuarios
+        </li>
+        <li class="list-group-item bg-dark text-light">
+          <a href="/api/usuarios" class="link">Usuarios</a> — registro, login y administración
+        </li>
+      </ul>
+    </section>
+  </main>
 
-    </main>
-    <footer class="bg-dark text-white">
-        <p> DV | Aplicaciones Híbridas | 2026</p>
-    </footer>
+  <footer class="bg-dark text-light py-3 text-center">
+    <p>Desarrollado por Flor Sategna | Aplicaciones Híbridas | 2026</p>
+  </footer>
 </body>
 </html>
