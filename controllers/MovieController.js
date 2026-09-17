@@ -2,6 +2,7 @@ import Movie from '../models/moviesModel.js';
 import Genre from '../models/genresModel.js';
 import Review from '../models/reviewsModel.js';
 
+
 class MovieController {
     async getAll(req, res) {
         try {
@@ -136,10 +137,6 @@ class MovieController {
         try {
             const id = req.params.mid;
             const {title, year, genre, description} = req.body;
-
-            if (!title || !year || !genre) {
-                return res.status(403).send('Faltan parámetros obligatorios');
-            }
 
             const movie = await Movie.findByIdAndUpdate(
                 id,

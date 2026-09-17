@@ -71,11 +71,6 @@ class ReviewsController {
         try {
             const { movie, user, comment, rating } = req.body;
 
-            if (!movie || !user || !rating) {
-                return res.status(403).send('Faltan parámetros obligatorios');
-            }
-
-            // Validamos que la película exista
             const movieExists = await Movie.findById(movie);
             if (!movieExists) {
                 return res.status(404).json({
@@ -100,10 +95,6 @@ class ReviewsController {
         try {
             const id = req.params.id;
             const { user, comment, rating, active } = req.body;
-
-            if (!user || !rating) {
-                return res.status(403).send('Faltan parámetros obligatorios');
-            }
 
             const review = await Review.findByIdAndUpdate(
                 id,

@@ -43,10 +43,6 @@ class GenreController {
         try {
             const { name } = req.body;
 
-            if (!name) {
-                return res.status(403).send('Faltan parámetros obligatorios');
-            }
-
             const genre = await Genre.create({ name });
 
             res.json({
@@ -64,10 +60,6 @@ class GenreController {
         try {
             const id = req.params.id;
             const { name, active } = req.body;
-
-            if (!name) {
-                return res.status(403).send('Faltan parámetros obligatorios');
-            }
 
             const genre = await Genre.findByIdAndUpdate(
                 id,

@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import MoviesController from '../controllers/MovieController.js';
+import validateMovie from '../middlewares/validateMovie.js';
 
 const router = Router();
 const controller = new MoviesController();
@@ -11,8 +12,8 @@ router.get('/:mid/reviews', controller.getReviewsByMovie);
 
 router.get('/', controller.getAll);
 router.get('/:mid', controller.getById);
-router.post('/', controller.create);
-router.put('/:mid', controller.update);
+router.post('/', validateMovie, controller.create);
+router.put('/:mid', validateMovie, controller.update);
 router.delete('/:mid', controller.delete);
 
 export default router;
