@@ -3,6 +3,7 @@ import {
     getUsers,
     getUserById,
     postUser,
+    updateUserById,
     deleteUser
 } from '../controllers/UserController.js'
 const router = express.Router();
@@ -10,6 +11,7 @@ const router = express.Router();
 router.get('/',         getUsers)
 router.get('/:id',      getUserById)
 router.post('/',        postUser)
+router.put('/:id',      updateUserById)
 router.delete('/:id',   deleteUser )
 
 const register = (request, response) => {

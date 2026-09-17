@@ -9,13 +9,19 @@ const getUsers = async (req, res) => {
     res.json( {message: 'success', data: data });
 };
 const getUserById = async (req, res) => {
-    const { id } = req.params;
-    const user = await Users.findById(id);
-    if( !user){
-        res.status(404).json({ message: 'Not Found', data: {}});
-        return;
+    try {
+        const { id } = req.params;
+        const user = await Users.findById(id);
+        if( !user){
+            return res.status(404).json({ message: 'Usuario no encontrado', data: {}});
+        }
+        res.status(200).json( {message: 'success', data: user });
+        } catch (error) {
+        if (error.name === 'CastError') {
+        return res.status(400).json({ message: 'ID inválido' });
+        }
+        res.status(500).json({ message: 'Error en el servidor', error: error.message });
     }
-    res.status(200).json( {message: 'success', data: user });
 };
 const postUser = async (req, res) => {
     const { body } = req;
@@ -39,25 +45,25 @@ const postUser = async (req, res) => {
     res.send(` Usuario Registrado con el ID ${id} `);
 };
 const updateUserById = async ( req, res) => {
-    const { id } = req.params;
-    const { body } = req;
-    const { name, email, password} = body;
+        const { id } = req.params;
+        const { body } = req;
+        const { name, email, password} = body;
 
-    if( !name || !email || !password){
-        return res.status(403).send('Faltan Parametros Obligatorios');
-    }
-    const passwordHash = await bcrypt.hash( password, 10);
+        if( !name || !email || !password){
+            return res.status(403).send('Faltan Parametros Obligatorios');
+        }
+        const passwordHash = await bcrypt.hash( password, 10);
 
-    const data = {
-        name,
-        email,
-        password: passwordHash
-    }
-    const user = await Users.findByIdAndUpdate(id, data );
-    user.save()
-    res.status(200).json( {message: 'success', data: {} });
+        const data = {
+            name,
+            email,
+            password: passwordHash
+        }
+        const user = await Users.findByIdAndUpdate(id, data );
+        user.save()
+        res.status(200).json( {message: 'success', data: {} });
 
-}
+    };
 const deleteUser = async (req, res) => {
     const { id } = req.params;
     const status = await Users.findByIdAndDelete( id);
@@ -68,4 +74,4 @@ const deleteUser = async (req, res) => {
     res.status(200).json( {message: 'success', data: {} });
 };
 
-export { getUsers, getUserById, postUser, deleteUser};
+export { getUsers, getUserById, postUser, updateUserById, deleteUser};

@@ -73,7 +73,7 @@ class MovieController {
             const filter = {};
 
             if (year) {
-                filter.year = year;
+                filter.year = Number(year);
             }
             if (genre) {
                 filter.genre = genre;
@@ -86,8 +86,9 @@ class MovieController {
                 data: movies
             });
         } catch (error) {
+            console.error(error);
             res.status(500).json({
-                message: 'Error al filtrar películas'
+                message: 'Error al filtrar películas', error: error.message
             });
         }
     }
