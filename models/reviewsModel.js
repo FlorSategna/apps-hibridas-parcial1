@@ -6,11 +6,9 @@ const reviewSchema = new mongoose.Schema({
         required: [true, 'La película de referencia es obligatoria']
     },
     user: {
-        type: String,
-        required: [true, 'El nombre de usuario es obligatorio'],
-        trim: true,
-        minlength: 3,
-        maxlength: 64
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'users',
+        required: [true, 'El usuario es obligatorio']
     },
     comment: {
         type: String,

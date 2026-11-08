@@ -69,7 +69,8 @@ class ReviewsController {
 
     async create(req, res) {
         try {
-            const { movie, user, comment, rating } = req.body;
+            const { movie, comment, rating } = req.body;
+            const user = req.user.id;
 
             const movieExists = await Movie.findById(movie);
             if (!movieExists) {
@@ -94,11 +95,11 @@ class ReviewsController {
     async update(req, res) {
         try {
             const id = req.params.id;
-            const { user, comment, rating, active } = req.body;
+            const { comment, rating, active } = req.body;
 
             const review = await Review.findByIdAndUpdate(
                 id,
-                { user, comment, rating, active },
+                { comment, rating, active },
                 { new: true, runValidators: true }
             );
 

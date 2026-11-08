@@ -1,7 +1,7 @@
 const validateReview = (req, res, next) => {
-    const { movie, user, rating } = req.body;
+    const { movie, rating } = req.body;
 
-    if (!movie || !user || !rating) {
+    if (!movie || !rating) {
         return res.status(403).json({ message: 'Faltan parámetros obligatorios en reseña' });
     }
 
